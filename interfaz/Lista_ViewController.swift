@@ -13,8 +13,8 @@ class Lista_ViewController: UIViewController {
     
     // arreglo para productos
     // selee desde el modelo
-    var productos = Productos.sharedInstance
-   
+     // var productos = Productos.sharedInstance
+    var usuarios = Usuarios.sharedInstance
     
     // variables de la escena listado productos usada para el listado
     @IBOutlet weak var txt_Listado: UITextView!
@@ -23,17 +23,36 @@ class Lista_ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        //  agrego 3 productos como ejemplo para ser desplegados en el listado
-        productos.addProducto(Producto(txt_Nombre:"DVD 80 min",txt_Cantidad:"10"))
-        productos.addProducto(Producto(txt_Nombre:"Disco Duro 80GB",txt_Cantidad:"80"))
-        productos.addProducto(Producto(txt_Nombre:"teclado ergo 102",txt_Cantidad:"840"))
+       //  agrego 10 usuarios
+        usuarios.addUsuario(Usuario(user:"Lizzy",pass:"1"))
+        usuarios.addUsuario(Usuario(user:"Anghelo",pass:"2"))
+        usuarios.addUsuario(Usuario(user:"Aaron",pass:"3"))
+        usuarios.addUsuario(Usuario(user:"Xavi",pass:"4"))
+        usuarios.addUsuario(Usuario(user:"Marcelo",pass:"5"))
+        usuarios.addUsuario(Usuario(user:"Phelipe",pass:"6"))
+        usuarios.addUsuario(Usuario(user:"Beatriz",pass:"7"))
+        usuarios.addUsuario(Usuario(user:"Bernardo",pass:"8"))
+        usuarios.addUsuario(Usuario(user:"Andres",pass:"9"))
+        usuarios.addUsuario(Usuario(user:"Queen Elizabeth",pass:"10"))
+        usuarios.addUsuario(Usuario(user:"Guillermo",pass:"11"))
+        
+        
         
         var salida: String
         salida = ""
         
+       // var usuariosOrdenados: NSArray
+        
+     
+        
+        txt_Listado.text = salida
         //  obtengo el listado desde el metodo definido en la clase Producto
-        for pro in productos.getListado(){
-            salida = salida + "\n " + pro.description
+        for usu in usuarios.getListadoDeUsuarios(){
+            salida = salida + "\n " + usu.description
+        
+           // usuariosOrdenados[1].description = usu.description
+        
+        
         }
         
         txt_Listado.text = salida
@@ -47,6 +66,82 @@ class Lista_ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func btn_OrdenarAZ(sender: AnyObject) {
+        
+      //
+      // boton para ordenar de a..z
+        
+        txt_Listado.text = ""
+        var salidaOrdenadaAZ:String
+        
+        salidaOrdenadaAZ = ""
+        
+        // arreglo para cargar los nombres de la clase y luego ordenarlos
+        var usuariosOrdenados  = [String]()
+        
+        var id = 0;
+        for usu in usuarios.getListadoDeUsuarios(){
+            
+            // agregamos uno a uno los usuario de la clase al arreglo
+            usuariosOrdenados.append(usu.description)
+            
+        }
+        
+        //  ordena el arreglo de a ... z
+        usuariosOrdenados.sort({$0 < $1})
+        
+        // concatenamos la salida con el usario y retorno de carro
+        for id = 0 ; id < usuariosOrdenados.count ; ++id {
+            salidaOrdenadaAZ = salidaOrdenadaAZ + "\n " + usuariosOrdenados[id]
+        }
+        
+        
+        // llenamos el text  view..
+        txt_Listado.text = salidaOrdenadaAZ
+        
+        
+    }
+    
+    
+    @IBAction func btn_OrdenarZA(sender: AnyObject) {
+     
+        //
+        // boton para ordenar de a..z
+        
+        txt_Listado.text = ""
+        var salidaOrdenadaZA:String
+        
+        salidaOrdenadaZA = ""
+        
+        // arreglo para cargar los nombres de la clase y luego ordenarlos
+        var usuariosOrdenadosZA  = [String]()
+        
+        var idZA = 0;
+        for usu in usuarios.getListadoDeUsuarios(){
+            
+            // agregamos uno a uno los usuario de la clase al arreglo
+            usuariosOrdenadosZA.append(usu.description)
+            
+        }
+        
+        //  ordena el arreglo de a ... z
+        usuariosOrdenadosZA.sort({$0 >  $1})
+        
+        // concatenamos la salida con el usario y retorno de carro
+        for idZA = 0 ; idZA < usuariosOrdenadosZA.count ; ++idZA {
+            salidaOrdenadaZA = salidaOrdenadaZA + "\n " + usuariosOrdenadosZA[idZA]
+        }
+        
+        
+        // llenamos el text  view..
+        txt_Listado.text = salidaOrdenadaZA
+        
+        
+        
+        
+    }
+    
     
 
     /*

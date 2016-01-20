@@ -28,11 +28,13 @@ class ViewController: UIViewController {
         
         
         // carga de arreglo usuarios con dos user demo y demo 1
+        // 18/01/2016 agregamos 10 usuarios para test de orden
         
         usuarios += [
             Usuario(user:"demo",pass:"demo"),
             Usuario(user:"demo1",pass:"demo1")
-            
+        
+        
         ]
 
         
