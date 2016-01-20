@@ -8,6 +8,8 @@
 
 import UIKit
 import XCTest
+//  importamos nuestro codigo en donde las clases fueron declaradas publicas
+import interfaz
 
 class interfazTests: XCTestCase {
     
@@ -24,7 +26,12 @@ class interfazTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         XCTAssert(true, "Pass")
+        
+        
+        // test de login, comparacion entre dato cargado a la clase y el resultado esperado
+    XCTAssertEqual(Usuario(user:"demo1",pass:"demo1").getUser(), "demo1" , "Acceso Correcto"   )
     }
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

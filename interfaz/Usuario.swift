@@ -11,32 +11,34 @@ import Foundation
 
 //  clase usuarios
 //  metodos para retornar user y pass
-class Usuario: NSObject, Printable {
+
+// para efectos de los test la clase es declara publica
+public class Usuario: NSObject, Printable {
     var User:String
     var Pass:String
     
     
     //  constructor de la clase usuarios
-    init(user:String,pass:String){
+    public init(user:String,pass:String){
         self.User = user
         self.Pass = pass
         
     }
     
     
-    func getUser()->String{
+    public func getUser()->String{
         return User
         
     }
     
-    func getPass()->String{
+    public func getPass()->String{
         return Pass
     }
     
     
     //  sobrescribimos el metodo description
     
-    override var description : String {
+    public override var description : String {
         return "\(User)"
     }
     
